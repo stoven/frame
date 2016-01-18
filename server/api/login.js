@@ -180,7 +180,9 @@ internals.applyRoutes = function (server, next) {
                     };
                     const template = 'forgot-password';
                     const context = {
-                        key: results.keyHash.key
+                        key: results.keyHash.key,
+                        email: request.payload.email,
+                        base_url: Config.get('/base_url')
                     };
 
                     mailer.sendEmail(emailOptions, template, context, done);
